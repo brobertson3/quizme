@@ -4,6 +4,21 @@ body {
 h1 {
   text-align: center; }
 
+button#start-btn {
+  width: 40%;
+  padding: 20px 0;
+  font-size: 3rem;
+  border-radius: 1rem;
+  display: block;
+  margin: 30vh auto 0 auto; }
+
+button#next-btn {
+  width: 60%;
+  margin-top: 20px;
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%; }
+
 div.right-pane, div.left-pane {
   width: 50%;
   display: inline-block;
@@ -18,7 +33,8 @@ div.speech-bubble {
   height: 100px;
   padding: 10px;
   position: absolute;
-  margin-left: 10px; }
+  transform: translateX(-50%);
+  left: 50%; }
   div.speech-bubble .arrow {
     border-style: solid;
     position: absolute; }
@@ -36,14 +52,17 @@ div.speech-bubble {
       left: -7px; }
 
 div.right-pane .question-area {
-  padding: 10px; }
+  padding: 10px;
+  text-align: center; }
 
 div.choice-btn {
   position: relative;
   display: inline-block;
   width: 70%;
   padding: 10px 3px;
-  margin: 15px 30px 15px 25px;
+  margin: 15px 0 15px 0;
+  transform: translateX(-50%);
+  left: 50%;
   background-color: rgba(220, 220, 220, 0.7);
   transition: background-color 1s;
   text-align: center; }

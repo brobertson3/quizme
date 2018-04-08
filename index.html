@@ -8,14 +8,14 @@
 
         <!-- Stylesheet links -->
         <link rel="stylesheet" href="css/normalize.css">
-        <!-- <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.min.css"> -->
+        <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.min.css">
         <!-- <link rel="stylesheet" type="text/css" href="fa/font-awesome.min.css"> -->
         <link rel="stylesheet" href="css/index.css">
         <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 
         <!-- Script links -->
         <script src='http://code.jquery.com/jquery-latest.min.js'></script>
-        <!-- <script type="text/javascript" src="bootstrap/bootstrap.min.js"></script> -->
+        <script type="text/javascript" src="bootstrap/bootstrap.min.js"></script>
     </head>
 
     <body>
@@ -32,19 +32,21 @@
         <header class="main_header">
             <h1>Quiz[ME]</h1> 
         </header>
-        <div class="left-pane">
+        <button class="btn btn-primary" id="start-btn">Start Game</button>
+        <div class="left-pane hidden">
             <div class="speech-bubble">
                 <div class="arrow bottom right"></div>
                 Can you hear me?
             </div>
-        </div><div class="right-pane">
+        </div><div class="right-pane hidden">
             <div class="question-area">Questions will go in here and they should be around this long?</div>
             <div class="choices-area">
-                <div class="choice-btn pointed" id="choice-a">A. Something</div>
-                <div class="choice-btn pointed" id="choice-b">B. Something</div>
-                <div class="choice-btn pointed" id="choice-c">C. Something</div>
-                <div class="choice-btn pointed" id="choice-d">D. Something</div>
+                <div class="choice-btn pointed" id="choice-a" role="button">A. Something</div>
+                <div class="choice-btn pointed" id="choice-b" role="button">B. Something</div>
+                <div class="choice-btn pointed" id="choice-c" role="button">C. Something</div>
+                <div class="choice-btn pointed" id="choice-d" role="button">D. Something</div>
             </div>
+            <button class="btn btn-primary hidden" id="next-btn">Next Question</button>
         </div>
 
         <script src="js/index.js"></script>
