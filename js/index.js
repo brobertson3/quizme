@@ -32,7 +32,7 @@ const speechBubble = {
 };
 
 /*
- * Object of questions and corresponding answers
+ * Object of questions and corresponding answers.
  */
  const questionAnswer = {
  	_questionOne: ["Question One", "A. Something goes here", "B. Something goes here",
