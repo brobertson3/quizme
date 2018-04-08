@@ -1,0 +1,22 @@
+body {
+	margin: 0;
+}
+
+h1 {
+	text-align: center;
+}
+
+div {
+	&.right-pane, &.left-pane {
+		width: 50%;
+		display: inline-block;
+	}
+
+	// &.right-pane {
+	// 	background-color: red;
+	// }
+
+	// &.left-pane {
+	// 	background-color: blue;
+	// }
+}
