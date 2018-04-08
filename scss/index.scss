@@ -10,13 +10,30 @@ div {
 	&.right-pane, &.left-pane {
 		width: 50%;
 		display: inline-block;
+		position: relative;
 	}
 
-	// &.right-pane {
-	// 	background-color: red;
-	// }
+	&.speech-bubble {
+		background-color: #f8f8f8;
+		border: 1px solid #c8c8c8;
+		border-radius: 5px;
+		width: 80%;
+		height: 100px;
+		// text-align: center;
+		padding: 20px;
+		position: absolute;
+		margin-left: 20px;
 
-	// &.left-pane {
-	// 	background-color: blue;
-	// }
+		.arrow {
+			border-style: solid;
+			position: absolute;
+		}
+	}
+
+	&.bottom {
+		border-color: #c8c8c8 transparent transparent;
+		border-width: 8px 8px 0 8px;
+		bottom: -8px;
+	}
+
 }
