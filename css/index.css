@@ -41,7 +41,7 @@ div.choice-btn {
   width: 35%;
   padding: 10px 3px;
   margin: 15px 30px 15px 25px;
-  background-color: rgba(255, 0, 0, 0.5); }
+  background-color: rgba(220, 220, 220, 0.7); }
   div.choice-btn:before {
     position: absolute;
     height: 0;
@@ -53,7 +53,7 @@ div.choice-btn {
     display: block;
     border-top: 19px solid transparent;
     border-bottom: 19px solid transparent;
-    border-right: 15px solid rgba(255, 0, 0, 0.5); }
+    border-right: 15px solid rgba(220, 220, 220, 0.7); }
   div.choice-btn:after {
     position: absolute;
     height: 0;
@@ -65,4 +65,4 @@ div.choice-btn {
     display: block;
     border-top: 19px solid transparent;
     border-bottom: 19px solid transparent;
-    border-left: 15px solid rgba(255, 0, 0, 0.5); }
+    border-left: 15px solid rgba(220, 220, 220, 0.7); }

@@ -1,3 +1,8 @@
+// Variables
+$inactive-button-color: rgba(220, 220, 220, 0.7);
+$speech-background: #f8f8f8;
+$speech-border: #c8c8c8;
+
 body {
 	margin: 0;
 }
@@ -15,8 +20,8 @@ div {
 	}
 
 	&.speech-bubble {
-		background-color: #f8f8f8;
-		border: 1px solid #c8c8c8;
+		background-color: $speech-background;
+		border: 1px solid $speech-border;
 		border-radius: 5px;
 		width: 80%;
 		height: 100px;
@@ -31,12 +36,12 @@ div {
 		}
 
 		.bottom {
-			border-color: #c8c8c8 transparent transparent;
+			border-color: $speech-border transparent transparent;
 			border-width: 8px 8px 0 8px;
 			bottom: -8px;
 
 			&:after {
-				border-color: #f8f8f8 transparent transparent;
+				border-color: $speech-background transparent transparent;
 				border-style: solid;
 				border-width: 7px 7px 0 7px;
 				bottom: 1px;
@@ -55,7 +60,7 @@ div {
 		width: 35%;
 		padding: 10px 3px;
 		margin: 15px 30px 15px 25px;
-		background-color: rgba(255, 0, 0, 0.5);
+		background-color: $inactive-button-color;
 
 		&:before {
 			position: absolute;
@@ -68,7 +73,7 @@ div {
 			display: block;
 			border-top: 19px solid transparent;
 			border-bottom: 19px solid transparent;
-			border-right: 15px solid rgba(255, 0, 0, 0.5);
+			border-right: 15px solid $inactive-button-color;
 		}
 
 		&:after {
@@ -82,7 +87,7 @@ div {
 			display: block;
 			border-top: 19px solid transparent;
 			border-bottom: 19px solid transparent;
-			border-left: 15px solid rgba(255, 0, 0, 0.5);
+			border-left: 15px solid $inactive-button-color;
 		}
 	}
 }
