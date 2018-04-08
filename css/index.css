@@ -16,9 +16,9 @@ div.speech-bubble {
   border-radius: 5px;
   width: 80%;
   height: 100px;
-  padding: 20px;
+  padding: 10px;
   position: absolute;
-  margin-left: 20px; }
+  margin-left: 10px; }
   div.speech-bubble .arrow {
     border-style: solid;
     position: absolute; }
@@ -35,13 +35,17 @@ div.speech-bubble {
       position: absolute;
       left: -7px; }
 
+div.right-pane .question-area {
+  padding: 10px; }
+
 div.choice-btn {
   position: relative;
   display: inline-block;
-  width: 35%;
+  width: 70%;
   padding: 10px 3px;
   margin: 15px 30px 15px 25px;
-  background-color: rgba(220, 220, 220, 0.7); }
+  background-color: rgba(220, 220, 220, 0.7);
+  text-align: center; }
   div.choice-btn:before {
     position: absolute;
     height: 0;

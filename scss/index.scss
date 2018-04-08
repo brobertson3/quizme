@@ -26,9 +26,9 @@ div {
 		width: 80%;
 		height: 100px;
 		// text-align: center;
-		padding: 20px;
+		padding: 10px;
 		position: absolute;
-		margin-left: 20px;
+		margin-left: 10px;
 
 		.arrow {
 			border-style: solid;
@@ -52,15 +52,20 @@ div {
 		}
 	}
 
-	
+	&.right-pane {
+		.question-area {
+			padding: 10px;
+		}
+	}
 
 	&.choice-btn {
 		position: relative;
 		display: inline-block;
-		width: 35%;
+		width: 70%;
 		padding: 10px 3px;
 		margin: 15px 30px 15px 25px;
 		background-color: $inactive-button-color;
+		text-align: center;
 
 		&:before {
 			position: absolute;
