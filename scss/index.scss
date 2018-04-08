@@ -1,7 +1,10 @@
 // Variables
 $inactive-button-color: rgba(220, 220, 220, 0.7);
+$hover-button-color: #ff751a;
 $speech-background: #f8f8f8;
 $speech-border: #c8c8c8;
+$button-duration: 1s;
+
 
 body {
 	margin: 0;
@@ -65,6 +68,7 @@ div {
 		padding: 10px 3px;
 		margin: 15px 30px 15px 25px;
 		background-color: $inactive-button-color;
+		transition: background-color $button-duration;
 		text-align: center;
 
 		&:before {
@@ -79,6 +83,7 @@ div {
 			border-top: 19px solid transparent;
 			border-bottom: 19px solid transparent;
 			border-right: 15px solid $inactive-button-color;
+			transition: border-right $button-duration;
 		}
 
 		&:after {
@@ -93,6 +98,19 @@ div {
 			border-top: 19px solid transparent;
 			border-bottom: 19px solid transparent;
 			border-left: 15px solid $inactive-button-color;
+			transition: border-left $button-duration;
+		}
+
+		&:hover {
+			background-color: $hover-button-color;
+
+			&:before {
+				border-right: 15px solid $hover-button-color;
+			}
+
+			&:after {
+				border-left: 15px solid $hover-button-color;
+			}
 		}
 	}
 }

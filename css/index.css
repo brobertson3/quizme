@@ -45,6 +45,7 @@ div.choice-btn {
   padding: 10px 3px;
   margin: 15px 30px 15px 25px;
   background-color: rgba(220, 220, 220, 0.7);
+  transition: background-color 1s;
   text-align: center; }
   div.choice-btn:before {
     position: absolute;
@@ -57,7 +58,8 @@ div.choice-btn {
     display: block;
     border-top: 19px solid transparent;
     border-bottom: 19px solid transparent;
-    border-right: 15px solid rgba(220, 220, 220, 0.7); }
+    border-right: 15px solid rgba(220, 220, 220, 0.7);
+    transition: border-right 1s; }
   div.choice-btn:after {
     position: absolute;
     height: 0;
@@ -69,4 +71,11 @@ div.choice-btn {
     display: block;
     border-top: 19px solid transparent;
     border-bottom: 19px solid transparent;
-    border-left: 15px solid rgba(220, 220, 220, 0.7); }
+    border-left: 15px solid rgba(220, 220, 220, 0.7);
+    transition: border-left 1s; }
+  div.choice-btn:hover {
+    background-color: #ff751a; }
+    div.choice-btn:hover:before {
+      border-right: 15px solid #ff751a; }
+    div.choice-btn:hover:after {
+      border-left: 15px solid #ff751a; }
