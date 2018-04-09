@@ -76,7 +76,7 @@ div.choice-btn {
     content: "";
     display: block;
     border-top: 19px solid transparent;
-    border-bottom: 19px solid transparent;
+    border-bottom: 21px solid transparent;
     border-right: 15px solid rgba(220, 220, 220, 0.7);
     transition: border-right 1s; }
   div.choice-btn:after {
@@ -89,7 +89,7 @@ div.choice-btn {
     content: "";
     display: block;
     border-top: 19px solid transparent;
-    border-bottom: 19px solid transparent;
+    border-bottom: 21px solid transparent;
     border-left: 15px solid rgba(220, 220, 220, 0.7);
     transition: border-left 1s; }
   div.choice-btn:hover {

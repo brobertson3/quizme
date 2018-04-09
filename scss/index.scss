@@ -104,7 +104,7 @@ div {
 			content: "";
 			display: block;
 			border-top: 19px solid transparent;
-			border-bottom: 19px solid transparent;
+			border-bottom: 21px solid transparent;
 			border-right: 15px solid $inactive-button-color;
 			transition: border-right $button-duration;
 		}
@@ -119,7 +119,7 @@ div {
 			content: "";
 			display: block;
 			border-top: 19px solid transparent;
-			border-bottom: 19px solid transparent;
+			border-bottom: 21px solid transparent;
 			border-left: 15px solid $inactive-button-color;
 			transition: border-left $button-duration;
 		}

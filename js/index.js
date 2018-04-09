@@ -2,7 +2,7 @@
  * Object of messages that will go in the speech bubble
  */
 const speechBubble = {
-	_questionNumber: 1,
+	_questionNumber: 4,
 	_correct: '',
 	_greeting: "Let's see how much you know about this great guy.",
 	_question: `Ready for question `,
@@ -35,6 +35,7 @@ const speechBubble = {
  * Object of questions and corresponding answers.
  */
  const questionAnswer = {
+ 	_totalScore: 0,
  	_questionOne: ["Question One", "A. Something goes here", "B. Something goes here",
  	               "C. Something goes here", "D. Something goes here", "A"],
  	_questionTwo: ["Question Two", "A. Something goes here", "B. Something goes here",
@@ -43,6 +44,24 @@ const speechBubble = {
  	               "C. Something goes here", "D. Something goes here", "C"],
  	_questionFour: ["Question Four", "A. Something goes here", "B. Something goes here",
  	               "C. Something goes here", "D. Something goes here", "D"],
+ 	get totalScore () {
+ 		return this._totalScore;
+ 	},
+ 	set totalScore (score) {
+ 		this._totalScore = score;
+ 	},
+ 	get questionOne () {
+ 		return this._questionOne;
+ 	},
+ 	get questionTwo () {
+ 		return this._questionTwo;
+ 	},
+ 	get questionThree () {
+ 		return this._questionThree;
+ 	},
+ 	get questionFour () {
+ 		return this._questionFour;
+ 	}
 
  };
 
@@ -56,7 +75,63 @@ const startGame = () => {
 	document.querySelector('.left-pane').classList.remove('hidden');
 }
 
+// Start game
 document.getElementById('start-btn').addEventListener("click", startGame);
+
+// Update the speech bubble to say Welcome and Question 1
+document.getElementById('speech-text').textContent = speechBubble._greeting;
+
+//Display all options for question 1
+//TODO - make this a function..maybe a method
+document.querySelector('.question-area').textContent = questionAnswer.questionOne[0];
+document.getElementById('choice-a').textContent = questionAnswer.questionOne[1];
+document.getElementById('choice-b').textContent = questionAnswer.questionOne[2];
+document.getElementById('choice-c').textContent = questionAnswer.questionOne[3];
+document.getElementById('choice-d').textContent = questionAnswer.questionOne[4];
+
+const evaluateAnswer = event => {
+	let curr = '';
+	// console.log(event.target.id);
+	switch (speechBubble.questionNumber) {
+		case 1:
+			curr = 'One';
+			break;
+		case 2:
+			curr = 'Two';
+			break;
+		case 3:
+			curr = 'Three';
+			break;
+		case 4:
+			curr = 'Four';
+			break
+		default:
+			console.log('Invalid number selected.')
+			break;
+	}
+	// If the correct answer is chosen, add point to score.
+	if (event.target.id[7].toUpperCase() === questionAnswer[`question${curr}`][5]) {
+		console.log('That is correct');
+		questionAnswer.totalScore = questionAnswer.totalScore + 1;
+	} else {
+		console.log("This is incorrect.");
+	}
+
+}
+
+//document.querySelectorAll('.choice-btn').addEventListener("click", evaluateAnswer);
+$('.choice-btn').click(evaluateAnswer);
+
+/* TODO 
+ * 1. Wait for user selection of choice
+ * 2. Once chosen, record the choice number
+ * 3. Compare choice number to the correct answer
+ * 4. Record whether it was right or wrong, add to the total score
+ * 5. Display button for next question
+ * 6. On click of next question, show the next question on the screen
+ */
+
+
 // let newObj = speechBubble;
 // newObj.correct = 'A';
 // console.log(newObj.correct);
