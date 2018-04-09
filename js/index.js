@@ -45,6 +45,18 @@ const speechBubble = {
  	               "C. Something goes here", "D. Something goes here", "D"],
 
  };
+
+/* Function to start the game. Adds the 'hidden' class to the start button.
+ * Removes the 'hidden' class from the left and right-pane. Makes start
+ * button disappear and everything else visible.
+ */ 
+const startGame = () => {
+	document.getElementById('start-btn').classList.add('hidden');
+	document.querySelector('.right-pane').classList.remove('hidden');
+	document.querySelector('.left-pane').classList.remove('hidden');
+}
+
+document.getElementById('start-btn').addEventListener("click", startGame);
 // let newObj = speechBubble;
 // newObj.correct = 'A';
 // console.log(newObj.correct);
