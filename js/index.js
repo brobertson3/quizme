@@ -65,6 +65,15 @@ const speechBubble = {
 
  };
 
+// Starts off everything
+const init = () => {
+	// Start game
+	document.getElementById('start-btn').addEventListener("click", startGame);
+	getQuestions('One');
+	// Update the speech bubble to say Welcome and Question 1
+	document.getElementById('speech-text').textContent = speechBubble._greeting;
+}
+
 /* Function to start the game. Adds the 'hidden' class to the start button.
  * Removes the 'hidden' class from the left and right-pane. Makes start
  * button disappear and everything else visible.
@@ -75,19 +84,20 @@ const startGame = () => {
 	document.querySelector('.left-pane').classList.remove('hidden');
 }
 
-// Start game
-document.getElementById('start-btn').addEventListener("click", startGame);
+// // Start game
+// document.getElementById('start-btn').addEventListener("click", startGame);
 
-// Update the speech bubble to say Welcome and Question 1
-document.getElementById('speech-text').textContent = speechBubble._greeting;
+// // Update the speech bubble to say Welcome and Question 1
+// document.getElementById('speech-text').textContent = speechBubble._greeting;
 
-//Display all options for question 1
-//TODO - make this a function..maybe a method
-document.querySelector('.question-area').textContent = questionAnswer.questionOne[0];
-document.getElementById('choice-a').textContent = questionAnswer.questionOne[1];
-document.getElementById('choice-b').textContent = questionAnswer.questionOne[2];
-document.getElementById('choice-c').textContent = questionAnswer.questionOne[3];
-document.getElementById('choice-d').textContent = questionAnswer.questionOne[4];
+// Display all options for current question
+const getQuestions = (number) => {
+	document.querySelector('.question-area').textContent = questionAnswer[`question${number}`][0];
+	document.getElementById('choice-a').textContent = questionAnswer[`question${number}`][1];
+	document.getElementById('choice-b').textContent = questionAnswer[`question${number}`][2];
+	document.getElementById('choice-c').textContent = questionAnswer[`question${number}`][3];
+	document.getElementById('choice-d').textContent = questionAnswer[`question${number}`][4];
+};
 
 const evaluateAnswer = event => {
 	let curr = '';
@@ -116,11 +126,16 @@ const evaluateAnswer = event => {
 	} else {
 		console.log("This is incorrect.");
 	}
+	// Show the next question button
+	document.getElementById('next-btn').classList.remove('hidden');
 
 }
 
 //document.querySelectorAll('.choice-btn').addEventListener("click", evaluateAnswer);
+// On click of an answer, evaluate whether correct
 $('.choice-btn').click(evaluateAnswer);
+//On click of Next Question button, repopulate the questions and answers
+$('#next-btn').click(getQuestions);
 
 /* TODO 
  * 1. Wait for user selection of choice
@@ -141,3 +156,4 @@ $('.choice-btn').click(evaluateAnswer);
 // console.log(newObj._question + newObj.questionNumber + '?');
 
 // console.log(questionAnswer._questionOne[5]);
+init();
