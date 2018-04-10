@@ -1,8 +1,14 @@
+@keyframes scoreTextPulse {
+  100% {
+    font-size: 6rem; } }
+
 body {
-  margin: 0; }
+  margin: 0;
+  font-size: 1.5rem; }
 
 h1 {
-  text-align: center; }
+  text-align: center;
+  margin-bottom: 50px; }
 
 button#start-btn {
   width: 40%;
@@ -54,6 +60,16 @@ div.speech-bubble {
 div.right-pane .question-area {
   padding: 10px;
   text-align: center; }
+
+div.right-pane .score-area {
+  text-align: center;
+  margin-top: 100px; }
+  div.right-pane .score-area #score-container {
+    height: 6rem;
+    margin-bottom: 50px; }
+    div.right-pane .score-area #score-container #score {
+      font-size: 5rem;
+      animation: scoreTextPulse 1s infinite alternate; }
 
 div.choice-btn {
   position: relative;

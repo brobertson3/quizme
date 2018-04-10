@@ -36,6 +36,7 @@ const speechBubble = {
  */
  const questionAnswer = {
  	_totalScore: 0,
+ 	_numberOfQuestions: 4,
  	_questionOne: ["Question One", "A. Something goes here", "B. Something goes here",
  	               "C. Something goes here", "D. Something goes here", "A"],
  	_questionTwo: ["Question Two", "A. Something goes here", "B. Something goes here",
@@ -49,6 +50,9 @@ const speechBubble = {
  	},
  	set totalScore (score) {
  		this._totalScore = score;
+ 	},
+ 	get numberOfQuestions () {
+ 		return this._numberOfQuestions;
  	},
  	get questionOne () {
  		return this._questionOne;
@@ -68,10 +72,25 @@ const speechBubble = {
 // Starts off everything
 const init = () => {
 	// Start game
-	document.getElementById('start-btn').addEventListener("click", startGame);
+	// document.getElementById('start-btn').addEventListener("click", startGame);
 	getQuestions('One');
 	// Update the speech bubble to say Welcome and Question 1
 	document.getElementById('speech-text').textContent = speechBubble._greeting;
+}
+
+// Reinitialize the visibility of the components.
+const newGame = () => {
+	speechBubble.questionNumber = 1;
+	questionAnswer.totalScore = 0;
+	document.querySelector('.left-pane').classList.add('hidden');
+	document.querySelector('.right-pane').classList.add('hidden');
+	document.querySelector('.score-area').classList.add('hidden');
+	document.querySelector('.question-area').classList.remove('hidden');
+	document.querySelector('.choices-area').classList.remove('hidden');
+	document.getElementById('start-btn').classList.remove('hidden');
+	$('.choice-btn').removeClass('correct incorrect disabled');
+	$('.choice-btn').click(evaluateAnswer);
+	init();
 }
 
 /* Function to start the game. Adds the 'hidden' class to the start button.
@@ -103,7 +122,17 @@ const nextQuestion = () => {
 	// On click of an answer, evaluate whether correct
 	$('.choice-btn').click(evaluateAnswer);
 	$('.choice-btn').removeClass('incorrect correct disabled');
-}
+};
+
+const checkScore = () => {
+	let percentage = Math.floor((questionAnswer.totalScore / questionAnswer.numberOfQuestions) * 100);
+	// Hide the right pane elements
+	document.querySelector('.question-area').classList.add('hidden');
+	document.querySelector('.choices-area').classList.add('hidden');
+	document.getElementById('check-score-btn').classList.add('hidden');
+	document.querySelector('.score-area').classList.remove('hidden');
+	document.getElementById('score').textContent = `${percentage}%`;
+};
 
 const evaluateAnswer = event => {
 	let curr = '';
@@ -151,14 +180,17 @@ const evaluateAnswer = event => {
 		document.getElementById('next-btn').classList.add('hidden');
 		// Show the check score button
 		document.getElementById('check-score-btn').classList.remove('hidden');
+		document.getElementById('check-score-btn').addEventListener('click', checkScore);
 	}
 	
 }
 
 //document.querySelectorAll('.choice-btn').addEventListener("click", evaluateAnswer);
+// On click of start button, start the game
+document.getElementById('start-btn').addEventListener("click", startGame);
 // On click of an answer, evaluate whether correct
 $('.choice-btn').click(evaluateAnswer);
-//On click of Next Question button, repopulate the questions and answers
+// On click of Next Question button, repopulate the questions and answers
 $('#next-btn').click(function () {
 	let curr = '';
 	switch (speechBubble.questionNumber) {
@@ -181,14 +213,21 @@ $('#next-btn').click(function () {
 	getQuestions(curr);
 	nextQuestion();
 });
+$('#new-game-btn').click(newGame);
 
 /* TODO 
- * 1. Wait for user selection of choice
- * 2. Once chosen, record the choice number
- * 3. Compare choice number to the correct answer
- * 4. Record whether it was right or wrong, add to the total score
- * 5. Display button for next question
- * 6. On click of next question, show the next question on the screen
+ * A.
+ * x1. Calculate the score percentage when 'Check Score' pressed.
+ * x2. Display that score percentage to the screen.
+ * x3. Hide other elements in the right pane.
+ * x4. Display a 'Play Again' button under the score (onclick start over game).
+ *
+ * B.
+ * 1. Change the speech bubble to reflect what's happening in game
+ *
+ * C.
+ * 1. Insert announcer under speech bubble
+ * 2. Reactions change for correct/incorrect answers
  */
 
 

@@ -7,13 +7,20 @@ $speech-background: #f8f8f8;
 $speech-border: #c8c8c8;
 $button-duration: 1s;
 
+@keyframes scoreTextPulse {
+	100% {
+		font-size: 6rem;
+	}
+}
 
 body {
 	margin: 0;
+	font-size: 1.5rem;
 }
 
 h1 {
 	text-align: center;
+	margin-bottom: 50px;
 }
 
 button {
@@ -82,6 +89,19 @@ div {
 		.question-area {
 			padding: 10px;
 			text-align: center;
+		}
+
+		.score-area {
+			text-align: center;
+			margin-top: 100px;
+			#score-container {
+				height: 6rem;
+				margin-bottom: 50px;
+				#score {
+					font-size: 5rem;
+					animation: scoreTextPulse 1s infinite alternate;
+				}
+			}
 		}
 	}
 
