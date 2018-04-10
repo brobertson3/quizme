@@ -12,7 +12,7 @@ button#start-btn {
   display: block;
   margin: 30vh auto 0 auto; }
 
-button#next-btn {
+button#next-btn, button#check-score-btn {
   width: 40%;
   margin-top: 20px;
   position: absolute;
@@ -66,6 +66,10 @@ div.choice-btn {
   background-color: rgba(220, 220, 220, 0.7);
   transition: background-color 1s;
   text-align: center; }
+  div.choice-btn.correct {
+    background-color: #33ff33; }
+  div.choice-btn.incorrect {
+    background-color: #ff3333; }
   div.choice-btn:before {
     position: absolute;
     height: 0;
@@ -79,6 +83,10 @@ div.choice-btn {
     border-bottom: 21px solid transparent;
     border-right: 15px solid rgba(220, 220, 220, 0.7);
     transition: border-right 1s; }
+  div.choice-btn.correct:before {
+    border-right: 15px solid #33ff33; }
+  div.choice-btn.incorrect:before {
+    border-right: 15px solid #ff3333; }
   div.choice-btn:after {
     position: absolute;
     height: 0;
@@ -92,9 +100,13 @@ div.choice-btn {
     border-bottom: 21px solid transparent;
     border-left: 15px solid rgba(220, 220, 220, 0.7);
     transition: border-left 1s; }
-  div.choice-btn:hover {
+  div.choice-btn.correct:after {
+    border-left: 15px solid #33ff33; }
+  div.choice-btn.incorrect:after {
+    border-left: 15px solid #ff3333; }
+  div.choice-btn:not(.disabled):hover {
     background-color: #ff751a; }
-    div.choice-btn:hover:before {
+    div.choice-btn:not(.disabled):hover:before {
       border-right: 15px solid #ff751a; }
-    div.choice-btn:hover:after {
+    div.choice-btn:not(.disabled):hover:after {
       border-left: 15px solid #ff751a; }

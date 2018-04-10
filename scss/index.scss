@@ -1,6 +1,8 @@
 // Variables
 $inactive-button-color: rgba(220, 220, 220, 0.7);
 $hover-button-color: #ff751a;
+$correct-button-color: #33ff33;
+$incorrect-button-color: #ff3333;
 $speech-background: #f8f8f8;
 $speech-border: #c8c8c8;
 $button-duration: 1s;
@@ -24,13 +26,14 @@ button {
 		margin: 30vh auto 0 auto;
 	}
 
-	&#next-btn {
+	&#next-btn, &#check-score-btn {
 		width: 40%;
 		margin-top: 20px;
 		position: absolute;
 		transform: translateX(-50%);
 		left: 50%;
 	}
+
 }
 
 div {
@@ -94,6 +97,14 @@ div {
 		transition: background-color $button-duration;
 		text-align: center;
 
+		&.correct {
+			background-color: $correct-button-color;
+		}
+
+		&.incorrect {
+			background-color: $incorrect-button-color;
+		}
+
 		&:before {
 			position: absolute;
 			height: 0;
@@ -107,6 +118,14 @@ div {
 			border-bottom: 21px solid transparent;
 			border-right: 15px solid $inactive-button-color;
 			transition: border-right $button-duration;
+		}
+
+		&.correct:before {
+			border-right: 15px solid $correct-button-color;
+		}
+
+		&.incorrect:before {
+			border-right: 15px solid $incorrect-button-color;
 		}
 
 		&:after {
@@ -124,7 +143,15 @@ div {
 			transition: border-left $button-duration;
 		}
 
-		&:hover {
+		&.correct:after {
+			border-left: 15px solid $correct-button-color;
+		}
+
+		&.incorrect:after {
+			border-left: 15px solid $incorrect-button-color;
+		}
+
+		&:not(.disabled):hover {
 			background-color: $hover-button-color;
 
 			&:before {
