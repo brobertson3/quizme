@@ -17,6 +17,8 @@ $icon-color: red;
 body {
 	margin: 0;
 	font-size: 1.5rem;
+	max-width: 900px;
+	margin: 0 auto;
 }
 
 h1 {
@@ -57,7 +59,7 @@ div {
 		border: 1px solid $speech-border;
 		border-radius: 5px;
 		width: 80%;
-		// height: 100px;
+		height: 150px;
 		// text-align: center;
 		padding: 10px;
 		position: absolute;
