@@ -6,6 +6,7 @@ $incorrect-button-color: #ff3333;
 $speech-background: #f8f8f8;
 $speech-border: #c8c8c8;
 $button-duration: 1s;
+$icon-color: red;
 
 @keyframes scoreTextPulse {
 	100% {
@@ -25,16 +26,16 @@ h1 {
 
 button {
 	&#start-btn {
-		width: 40%;
+		width: 80%;
 		padding: 20px 0;
-		font-size: 3rem;
+		font-size: 2.5rem;
 		border-radius: 1rem;
 		display: block;
 		margin: 30vh auto 0 auto;
 	}
 
 	&#next-btn, &#check-score-btn {
-		width: 40%;
+		width: 60%;
 		margin-top: 20px;
 		position: absolute;
 		transform: translateX(-50%);
@@ -56,7 +57,7 @@ div {
 		border: 1px solid $speech-border;
 		border-radius: 5px;
 		width: 80%;
-		height: 100px;
+		// height: 100px;
 		// text-align: center;
 		padding: 10px;
 		position: absolute;
@@ -94,6 +95,7 @@ div {
 		.score-area {
 			text-align: center;
 			margin-top: 100px;
+
 			#score-container {
 				height: 6rem;
 				margin-bottom: 50px;
@@ -102,13 +104,30 @@ div {
 					animation: scoreTextPulse 1s infinite alternate;
 				}
 			}
+			#social-media {
+				.fas, .fab {
+					color: $icon-color;
+					margin-left: 5px;
+					margin-right: 5px;
+				}
+
+				ul {
+					list-style-type: none;
+					margin-top: 20px;
+					padding: 0;
+
+					li {
+						display: inline-block;
+					}
+				}
+			}
 		}
 	}
 
 	&.choice-btn {
 		position: relative;
 		display: inline-block;
-		width: 70%;
+		width: 75%;
 		padding: 10px 3px;
 		margin: 15px 0 15px 0;
 		transform: translateX(-50%);

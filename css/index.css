@@ -11,15 +11,15 @@ h1 {
   margin-bottom: 50px; }
 
 button#start-btn {
-  width: 40%;
+  width: 80%;
   padding: 20px 0;
-  font-size: 3rem;
+  font-size: 2.5rem;
   border-radius: 1rem;
   display: block;
   margin: 30vh auto 0 auto; }
 
 button#next-btn, button#check-score-btn {
-  width: 40%;
+  width: 60%;
   margin-top: 20px;
   position: absolute;
   transform: translateX(-50%);
@@ -36,7 +36,6 @@ div.speech-bubble {
   border: 1px solid #c8c8c8;
   border-radius: 5px;
   width: 80%;
-  height: 100px;
   padding: 10px;
   position: absolute;
   transform: translateX(-50%);
@@ -70,11 +69,21 @@ div.right-pane .score-area {
     div.right-pane .score-area #score-container #score {
       font-size: 5rem;
       animation: scoreTextPulse 1s infinite alternate; }
+  div.right-pane .score-area #social-media .fas, div.right-pane .score-area #social-media .fab {
+    color: red;
+    margin-left: 5px;
+    margin-right: 5px; }
+  div.right-pane .score-area #social-media ul {
+    list-style-type: none;
+    margin-top: 20px;
+    padding: 0; }
+    div.right-pane .score-area #social-media ul li {
+      display: inline-block; }
 
 div.choice-btn {
   position: relative;
   display: inline-block;
-  width: 70%;
+  width: 75%;
   padding: 10px 3px;
   margin: 15px 0 15px 0;
   transform: translateX(-50%);
