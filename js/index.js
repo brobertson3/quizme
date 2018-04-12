@@ -4,14 +4,14 @@
 const speechBubble = {
 	_questionNumber: 1,
 	_correct: '',
-	_greeting: "How's it going? I hope you're ready to learn a little about me. Press the Start Game button to begin!",
+	_greeting: "How's it going? I hope you're ready to learn a little about me. Press the 'Start Game' button to begin!",
 	_question: 'Are you ready for Question ',
 	_correctResponse: ' was the right answer. Nicely done!',
 	_wrongResponse: "Oh no! That's not quite right. What you were looking for was choice ",
 	_checkScorePrompt: "All finished! Click the 'Check Score' button to the right to see how you did.",
 	_allCorrect: "Wow, you got them all right! Either you know me pretty well or you're a whiz at multiple choice. Either way, there's much more to learn about me. Click one of the links to the right to check out my portfolio and social media. Or you can play again!",
 	_someWrongBeginning: "Uh oh. Looks like you got ",
-	_someWrongEnding: " wrong. Don't fret. We can change that. Just check out the links to the right to view my portfolio and social media accounts. Or if you want, you can play again!",
+	_someWrongEnding: " wrong. Don't fret. We can change that. You just have to learn a little more about me. Check out the links to the right to view my portfolio and social media accounts. Or if you want, you can play again!",
 	set questionNumber(number) {
 		if (typeof number === 'number') {
 			this._questionNumber = number;
@@ -26,10 +26,10 @@ const speechBubble = {
 		return this._question + this._questionNumber + '?';
 	},
 	get correctResponse() {
-		return this._correct + this._correctResponse;
+		return "'" + this._correct + "'" + this._correctResponse;
 	},
 	get wrongResponse() {
-		return this._wrongResponse + this._correct;
+		return this._wrongResponse + "'" + this._correct + "'";
 	},
 	get checkScorePrompt() {
 		return this._checkScorePrompt;
@@ -59,13 +59,13 @@ const speechBubble = {
  const questionAnswer = {
  	_totalScore: 0,
  	_numberOfQuestions: 4,
- 	_questionOne: ["Where does Brent currently live?", "A. Brea, CA", "B. Baltimore, MD",
+ 	_questionOne: ["1. Where does Brent currently live?", "A. Brea, CA", "B. Baltimore, MD",
  	               "C. Seattle, WA", "D. Portland, OR", "A"],
- 	_questionTwo: ["What languages is Brent experienced in?", "A. HTML5", "B. CSS3",
+ 	_questionTwo: ["2. What languages is Brent experienced in?", "A. HTML5", "B. CSS3",
  	               "C. JavaScript", "D. All of the above", "D"],
- 	_questionThree: ["What position is Brent currently looking to fill.", "A. Web Developer", "B. UI Developer",
+ 	_questionThree: ["3. What position is Brent currently looking to fill?", "A. Web Developer", "B. UI Developer",
  	               "C. UI/UX Designer", "D. All of the above", "D"],
- 	_questionFour: ["When is Brent available to start?", "A. Not looking", "B. Immediately",
+ 	_questionFour: ["4. When is Brent available to start?", "A. Not looking", "B. Immediately",
  	               "C. A few months", "D. Next year", "B"],
  	get totalScore () {
  		return this._totalScore;
@@ -95,7 +95,7 @@ const init = () => {
 	// Start game
 	// document.getElementById('start-btn').addEventListener("click", startGame);
 	getQuestions('One');
-	// Update the speech bubble to say Welcome and Question 1
+	// Update the speech bubble to say Welcome
 	document.getElementById('speech-text').textContent = speechBubble._greeting;
 }
 
@@ -111,6 +111,7 @@ const newGame = () => {
 	document.getElementById('start-btn').classList.remove('hidden');
 	$('.choice-btn').removeClass('correct incorrect disabled');
 	$('.choice-btn').click(evaluateAnswer);
+	$('#image-area img').attr('src', 'img/StartStickman.svg');
 	init();
 }
 
@@ -122,6 +123,7 @@ const startGame = () => {
 	document.getElementById('speech-text').textContent = speechBubble.question;
 	document.getElementById('start-btn').classList.add('hidden');
 	document.querySelector('.question-area').classList.remove('hidden');
+	$('#image-area img').attr('src', 'img/QuestionStickman.svg');
 	$('.choices-area').removeClass('hidden');
 
 	// document.querySelector('.right-pane').classList.remove('hidden');
@@ -149,6 +151,7 @@ const nextQuestion = () => {
 	$('.choice-btn').removeClass('incorrect correct disabled');
 	document.getElementById('speech-text').textContent = speechBubble.question;
 	document.getElementById('next-btn').classList.add('hidden');
+	$('#image-area img').attr('src', 'img/QuestionStickman.svg');
 };
 
 const checkScore = () => {
@@ -159,6 +162,7 @@ const checkScore = () => {
 	document.getElementById('check-score-btn').classList.add('hidden');
 	document.querySelector('.score-area').classList.remove('hidden');
 	document.getElementById('score').textContent = `${percentage}%`;
+	$('#image-area img').attr('src', 'img/StartStickman.svg');
 	if (questionAnswer.totalScore < 4) {
 		document.getElementById('speech-text').textContent = speechBubble.someWrong;
 	}  else {
@@ -168,6 +172,7 @@ const checkScore = () => {
 
 const evaluateAnswer = event => {
 	let curr = '';
+	let index = 0;
 	// console.log(event.target.id);
 	switch (speechBubble.questionNumber) {
 		case 1:
@@ -199,11 +204,34 @@ const evaluateAnswer = event => {
 		// console.log('That is correct');
 		questionAnswer.totalScore = questionAnswer.totalScore + 1;
 		event.target.classList.add('correct');
+		$('#image-area img').attr('src', 'img/CorrectStickman.svg');
 		document.getElementById('speech-text').textContent = speechBubble.correctResponse;
 	} else {
 		// console.log("This is incorrect.");
 		event.target.classList.add('incorrect');
-		document.getElementById('speech-text').textContent = speechBubble.wrongResponse;
+		// Find the index of the correct answer
+		switch (questionAnswer[`question${curr}`][5]) {
+			case 'A':
+				index = 0;
+				break;
+			case 'B':
+				index = 1;
+				break;
+			case 'C':
+				index = 2;
+				break;
+			case 'D':
+				index = 3;
+				break;
+			default:
+				break;
+		}
+
+		// Change the color of the correct answer to green
+		$('.choice-btn').eq(index).addClass('correct');
+
+		$('#image-area img').attr('src', 'img/IncorrectStickman.svg');
+		document.getElementById('speech-text').textContent = speechBubble.wrongResponse + '.';
 	}
 
 	if (curr !== 'Four') {
@@ -249,31 +277,9 @@ $('#next-btn').click(function () {
 	getQuestions(curr);
 	nextQuestion();
 });
+
+// Registering event listeners
 $('#new-game-btn').click(newGame);
 document.getElementById('check-score-btn').addEventListener('click', checkScore);
-/* TODO 
- * A.
- * x1. Calculate the score percentage when 'Check Score' pressed.
- * x2. Display that score percentage to the screen.
- * x3. Hide other elements in the right pane.
- * x4. Display a 'Play Again' button under the score (onclick start over game).
- *
- * B.
- * 1. Change the speech bubble to reflect what's happening in game
- *
- * C.
- * 1. Insert announcer under speech bubble
- * 2. Reactions change for correct/incorrect answers
- */
 
-
- // let newObj = speechBubble;
- // newObj.correct = 'A';
- // console.log(newObj.correct);
- // console.log(newObj.correctResponse);
-// newObj.questionNumber = 3;
-// console.log(newObj.questionNumber);
-// console.log(newObj._question + newObj.questionNumber + '?');
-
-// console.log(questionAnswer._questionOne[5]);
 init();

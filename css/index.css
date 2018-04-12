@@ -6,11 +6,27 @@ body {
   margin: 0;
   font-size: 1.5rem;
   max-width: 900px;
-  margin: 0 auto; }
+  margin: 0 auto;
+  background-color: #F2F2F2;
+  font-family: 'Roboto', sans-serif; }
 
 h1 {
   text-align: center;
-  margin-bottom: 50px; }
+  margin-bottom: 50px;
+  font-size: 4rem; }
+  h1 .fancy-title {
+    font-size: 7rem;
+    font-family: 'Parisienne', cursive;
+    margin-right: 3px;
+    color: #FF7900; }
+
+button.custom-btn {
+  width: 60%;
+  margin-top: 20px;
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+  transition: color 0.4s, background-color 0.4s; }
 
 button#start-btn {
   width: 80%;
@@ -18,14 +34,26 @@ button#start-btn {
   font-size: 2.5rem;
   border-radius: 1rem;
   display: block;
-  margin: 30vh auto 0 auto; }
+  margin-top: 100px; }
 
-button#next-btn, button#check-score-btn {
-  width: 60%;
-  margin-top: 20px;
-  position: absolute;
-  transform: translateX(-50%);
-  left: 50%; }
+button#new-game-btn {
+  margin-top: 75px; }
+
+button.btn-primary {
+  background-color: #FF7900;
+  border: solid #000 1px; }
+  button.btn-primary:hover {
+    color: #FF7900;
+    background-color: #fff; }
+  button.btn-primary:active:hover, button.btn-primary.active:hover, button.btn-primary:active:focus, button.btn-primary.active:focus, button.btn-primary:active.focus, button.btn-primary.actice.focus {
+    color: #FF7900 !important;
+    background-color: #fff !important; }
+  button.btn-primary:visited, button.btn-primary:focused, button.btn-primary:active {
+    color: #FF7900 !important;
+    background-color: #fff !important; }
+  button.btn-primary:focus, button.btn-primary:active {
+    outline: none !important;
+    box-shadow: none; }
 
 div.right-pane, div.left-pane {
   width: 50%;
@@ -33,25 +61,25 @@ div.right-pane, div.left-pane {
   position: relative;
   vertical-align: top; }
 
-div.speech-bubble {
-  background-color: #f8f8f8;
-  border: 1px solid #c8c8c8;
+div.left-pane .speech-bubble {
+  background-color: #fff;
+  border: 1px solid #000;
   border-radius: 5px;
   width: 80%;
-  height: 150px;
+  height: 295px;
   padding: 10px;
   position: absolute;
   transform: translateX(-50%);
   left: 50%; }
-  div.speech-bubble .arrow {
+  div.left-pane .speech-bubble .arrow {
     border-style: solid;
     position: absolute; }
-  div.speech-bubble .bottom {
-    border-color: #c8c8c8 transparent transparent;
+  div.left-pane .speech-bubble .bottom {
+    border-color: #000 transparent transparent;
     border-width: 8px 8px 0 8px;
     bottom: -8px; }
-    div.speech-bubble .bottom:after {
-      border-color: #f8f8f8 transparent transparent;
+    div.left-pane .speech-bubble .bottom:after {
+      border-color: #fff transparent transparent;
       border-style: solid;
       border-width: 7px 7px 0 7px;
       bottom: 1px;
@@ -59,13 +87,22 @@ div.speech-bubble {
       position: absolute;
       left: -7px; }
 
+div.left-pane #image-area {
+  position: absolute;
+  top: 300px;
+  transform: translateX(-50%);
+  left: 50%; }
+  div.left-pane #image-area img {
+    height: 275px;
+    width: 150px; }
+
 div.right-pane .question-area {
   padding: 10px;
   text-align: center; }
 
 div.right-pane .score-area {
   text-align: center;
-  margin-top: 100px; }
+  margin-top: 40px; }
   div.right-pane .score-area #score-container {
     height: 6rem;
     margin-bottom: 50px; }
@@ -73,17 +110,20 @@ div.right-pane .score-area {
       font-size: 5rem;
       animation: scoreTextPulse 1s infinite alternate; }
   div.right-pane .score-area #social-media .fas, div.right-pane .score-area #social-media .fab {
-    color: red;
+    color: #000;
     margin-left: 5px;
-    margin-right: 5px; }
+    margin-right: 5px;
+    transition: color 0.4s; }
+    div.right-pane .score-area #social-media .fas:hover, div.right-pane .score-area #social-media .fab:hover {
+      color: #FF7900; }
   div.right-pane .score-area #social-media ul {
     list-style-type: none;
-    margin-top: 20px;
+    margin-top: 40px;
     padding: 0; }
     div.right-pane .score-area #social-media ul li {
       display: inline-block; }
 
-div.choice-btn {
+div.right-pane .choices-area .choice-btn {
   position: relative;
   display: inline-block;
   width: 75%;
@@ -91,14 +131,14 @@ div.choice-btn {
   margin: 15px 0 15px 0;
   transform: translateX(-50%);
   left: 50%;
-  background-color: rgba(220, 220, 220, 0.7);
-  transition: background-color 1s;
+  background-color: #fff;
+  transition: color 0.4s;
   text-align: center; }
-  div.choice-btn.correct {
-    background-color: #33ff33; }
-  div.choice-btn.incorrect {
-    background-color: #ff3333; }
-  div.choice-btn:before {
+  div.right-pane .choices-area .choice-btn.correct {
+    color: #00A617; }
+  div.right-pane .choices-area .choice-btn.incorrect {
+    color: #FF7900; }
+  div.right-pane .choices-area .choice-btn:before {
     position: absolute;
     height: 0;
     width: 0;
@@ -109,13 +149,8 @@ div.choice-btn {
     display: block;
     border-top: 19px solid transparent;
     border-bottom: 21px solid transparent;
-    border-right: 15px solid rgba(220, 220, 220, 0.7);
-    transition: border-right 1s; }
-  div.choice-btn.correct:before {
-    border-right: 15px solid #33ff33; }
-  div.choice-btn.incorrect:before {
-    border-right: 15px solid #ff3333; }
-  div.choice-btn:after {
+    border-right: 15px solid #fff; }
+  div.right-pane .choices-area .choice-btn:after {
     position: absolute;
     height: 0;
     width: 0;
@@ -126,15 +161,6 @@ div.choice-btn {
     display: block;
     border-top: 19px solid transparent;
     border-bottom: 21px solid transparent;
-    border-left: 15px solid rgba(220, 220, 220, 0.7);
-    transition: border-left 1s; }
-  div.choice-btn.correct:after {
-    border-left: 15px solid #33ff33; }
-  div.choice-btn.incorrect:after {
-    border-left: 15px solid #ff3333; }
-  div.choice-btn:not(.disabled):hover {
-    background-color: #ff751a; }
-    div.choice-btn:not(.disabled):hover:before {
-      border-right: 15px solid #ff751a; }
-    div.choice-btn:not(.disabled):hover:after {
-      border-left: 15px solid #ff751a; }
+    border-left: 15px solid #fff; }
+  div.right-pane .choices-area .choice-btn:not(.disabled):hover {
+    color: #FF7900; }

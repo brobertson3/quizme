@@ -1,12 +1,16 @@
 // Variables
-$inactive-button-color: rgba(220, 220, 220, 0.7);
-$hover-button-color: #ff751a;
-$correct-button-color: #33ff33;
-$incorrect-button-color: #ff3333;
-$speech-background: #f8f8f8;
-$speech-border: #c8c8c8;
-$button-duration: 1s;
-$icon-color: red;
+$inactive-button-color: #fff; //rgba(220, 220, 220, 0.7);
+$hover-button-color: #FF7900;//#ff751a;
+$correct-button-color: #00A617;//#33ff33;
+$incorrect-button-color: #FF7900;//#ff3333;
+$speech-background: #fff; //#f8f8f8;
+$speech-border: #000;//#c8c8c8;
+$body-background: #F2F2F2;//#E3F4FC;
+$title-color: #0016D2;//#E3F4FC;
+$fancy-title-color: #FF7900;
+$button-duration: 0.4s;
+$pulse-duration: 1s;
+$icon-color: #000;
 
 @keyframes scoreTextPulse {
 	100% {
@@ -19,29 +23,71 @@ body {
 	font-size: 1.5rem;
 	max-width: 900px;
 	margin: 0 auto;
+	background-color: $body-background;
+	font-family: 'Roboto', sans-serif;
 }
 
 h1 {
 	text-align: center;
 	margin-bottom: 50px;
+	font-size: 4rem;
+	//color: $title-color;
+
+	.fancy-title {
+		font-size: 7rem;
+		font-family: 'Parisienne', cursive;
+		margin-right: 3px;
+		color: $fancy-title-color;
+	}
 }
 
 button {
+
+	&.custom-btn  {
+		width: 60%;
+		margin-top: 20px;
+		position: absolute;
+		transform: translateX(-50%);
+		left: 50%;
+		transition: color $button-duration, background-color $button-duration;
+	}
+
 	&#start-btn {
 		width: 80%;
 		padding: 20px 0;
 		font-size: 2.5rem;
 		border-radius: 1rem;
 		display: block;
-		margin: 30vh auto 0 auto;
+		margin-top: 100px;
 	}
 
-	&#next-btn, &#check-score-btn {
-		width: 60%;
-		margin-top: 20px;
-		position: absolute;
-		transform: translateX(-50%);
-		left: 50%;
+	&#new-game-btn {
+		margin-top: 75px;
+	}
+
+	&.btn-primary {
+		background-color: $fancy-title-color;
+		border: solid #000 1px;
+
+		&:hover {
+			color: $hover-button-color;
+			background-color: $speech-background;
+		}
+
+		&:active:hover, &.active:hover, &:active:focus, &.active:focus, &:active.focus, &.actice.focus {
+			color: $hover-button-color !important;
+			background-color: $speech-background !important;
+		}
+
+		&:visited , &:focused, &:active {
+			color: $hover-button-color !important;
+			background-color: $speech-background !important;
+		}
+
+		&:focus, &:active {
+   			outline: none !important;
+   			box-shadow: none;
+		}
 	}
 
 }
@@ -54,36 +100,49 @@ div {
 		vertical-align: top;
 	}
 
-	&.speech-bubble {
-		background-color: $speech-background;
-		border: 1px solid $speech-border;
-		border-radius: 5px;
-		width: 80%;
-		height: 150px;
-		// text-align: center;
-		padding: 10px;
-		position: absolute;
-		transform: translateX(-50%);
-		left: 50%;
-
-		.arrow {
-			border-style: solid;
+	&.left-pane {
+		.speech-bubble {
+			background-color: $speech-background;
+			border: 1px solid $speech-border;
+			border-radius: 5px;
+			width: 80%;
+			height: 295px;
+			padding: 10px;
 			position: absolute;
+			transform: translateX(-50%);
+			left: 50%;
+
+			.arrow {
+				border-style: solid;
+				position: absolute;
+			}
+
+			.bottom {
+				border-color: $speech-border transparent transparent;
+				border-width: 8px 8px 0 8px;
+				bottom: -8px;
+
+				&:after {
+					border-color: $speech-background transparent transparent;
+					border-style: solid;
+					border-width: 7px 7px 0 7px;
+					bottom: 1px;
+					content: "";
+					position: absolute;
+					left: -7px;
+				}
+			}
 		}
 
-		.bottom {
-			border-color: $speech-border transparent transparent;
-			border-width: 8px 8px 0 8px;
-			bottom: -8px;
+		#image-area {
+			position: absolute;
+			top: 300px;
+			transform: translateX(-50%);
+			left: 50%;
 
-			&:after {
-				border-color: $speech-background transparent transparent;
-				border-style: solid;
-				border-width: 7px 7px 0 7px;
-				bottom: 1px;
-				content: "";
-				position: absolute;
-				left: -7px;
+			img {
+				height: 275px;
+				width: 150px;
 			}
 		}
 	}
@@ -96,14 +155,14 @@ div {
 
 		.score-area {
 			text-align: center;
-			margin-top: 100px;
+			margin-top: 40px;
 
 			#score-container {
 				height: 6rem;
 				margin-bottom: 50px;
 				#score {
 					font-size: 5rem;
-					animation: scoreTextPulse 1s infinite alternate;
+					animation: scoreTextPulse $pulse-duration infinite alternate;
 				}
 			}
 			#social-media {
@@ -111,11 +170,16 @@ div {
 					color: $icon-color;
 					margin-left: 5px;
 					margin-right: 5px;
+					transition: color $button-duration;
+
+					&:hover {
+						color: $hover-button-color;
+					}
 				}
 
 				ul {
 					list-style-type: none;
-					margin-top: 20px;
+					margin-top: 40px;
 					padding: 0;
 
 					li {
@@ -124,84 +188,92 @@ div {
 				}
 			}
 		}
-	}
 
-	&.choice-btn {
-		position: relative;
-		display: inline-block;
-		width: 75%;
-		padding: 10px 3px;
-		margin: 15px 0 15px 0;
-		transform: translateX(-50%);
-		left: 50%;
-		background-color: $inactive-button-color;
-		transition: background-color $button-duration;
-		text-align: center;
+		.choices-area {
 
-		&.correct {
-			background-color: $correct-button-color;
-		}
+			.choice-btn {
+				position: relative;
+				display: inline-block;
+				width: 75%;
+				padding: 10px 3px;
+				margin: 15px 0 15px 0;
+				transform: translateX(-50%);
+				left: 50%;
+				background-color: $inactive-button-color;
+				transition: color $button-duration;
+				//transition: background-color $button-duration;
+				text-align: center;
 
-		&.incorrect {
-			background-color: $incorrect-button-color;
-		}
+				&.correct {
+					//background-color: $correct-button-color;
+					color: $correct-button-color;
+				}
 
-		&:before {
-			position: absolute;
-			height: 0;
-			width: 0;
-			top: 0;
-			right: 100%;
-			left: -15px;
-			content: "";
-			display: block;
-			border-top: 19px solid transparent;
-			border-bottom: 21px solid transparent;
-			border-right: 15px solid $inactive-button-color;
-			transition: border-right $button-duration;
-		}
+				&.incorrect {
+					//background-color: $incorrect-button-color;
+					color: $incorrect-button-color;
+				}
 
-		&.correct:before {
-			border-right: 15px solid $correct-button-color;
-		}
+				&:before {
+					position: absolute;
+					height: 0;
+					width: 0;
+					top: 0;
+					right: 100%;
+					left: -15px;
+					content: "";
+					display: block;
+					border-top: 19px solid transparent;
+					border-bottom: 21px solid transparent;
+					border-right: 15px solid $inactive-button-color;
+					// transition: border-right $button-duration;
+				}
 
-		&.incorrect:before {
-			border-right: 15px solid $incorrect-button-color;
-		}
+				&.correct:before {
+					// border-right: 15px solid $correct-button-color;
+				}
 
-		&:after {
-			position: absolute;
-			height: 0;
-			width: 0;
-			top: 0;
-			left: 100%;
-			right: 15px;
-			content: "";
-			display: block;
-			border-top: 19px solid transparent;
-			border-bottom: 21px solid transparent;
-			border-left: 15px solid $inactive-button-color;
-			transition: border-left $button-duration;
-		}
+				&.incorrect:before {
+					// border-right: 15px solid $incorrect-button-color;
+				}
 
-		&.correct:after {
-			border-left: 15px solid $correct-button-color;
-		}
+				&:after {
+					position: absolute;
+					height: 0;
+					width: 0;
+					top: 0;
+					left: 100%;
+					right: 15px;
+					content: "";
+					display: block;
+					border-top: 19px solid transparent;
+					border-bottom: 21px solid transparent;
+					border-left: 15px solid $inactive-button-color;
+					// transition: border-left $button-duration;
+				}
 
-		&.incorrect:after {
-			border-left: 15px solid $incorrect-button-color;
-		}
+				&.correct:after {
+					// border-left: 15px solid $correct-button-color;
+				}
 
-		&:not(.disabled):hover {
-			background-color: $hover-button-color;
+				&.incorrect:after {
+					// border-left: 15px solid $incorrect-button-color;
+				}
 
-			&:before {
-				border-right: 15px solid $hover-button-color;
+				&:not(.disabled):hover {
+					//background-color: $hover-button-color;
+					color: $hover-button-color;
+
+					&:before {
+						//border-right: 15px solid $hover-button-color;
+					}
+
+					&:after {
+						// border-left: 15px solid $hover-button-color;
+					}
+				}		
 			}
 
-			&:after {
-				border-left: 15px solid $hover-button-color;
-			}
 		}
 	}
 }

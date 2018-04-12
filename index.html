@@ -11,6 +11,7 @@
         <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="fa/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/index.css">
+        <link href="https://fonts.googleapis.com/css?family=Parisienne|Roboto" rel="stylesheet">
         <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 
         <!-- Script links -->
@@ -30,15 +31,18 @@
 -->
         <!-- Main header for the site - where the logo goes -->
         <header class="main_header">
-            <h1>Quiz[ME]</h1> 
+            <h1><span class="fancy-title">Quiz</span>[ME]</h1> 
         </header>
         <div class="left-pane">
             <div class="speech-bubble">
                 <div class="arrow bottom right"></div>
                 <div id="speech-text">Can you hear me?</div>
             </div>
+            <div id="image-area">
+                <img src="img/StartStickman.svg">
+            </div>
         </div><div class="right-pane">
-            <button class="btn btn-primary" id="start-btn">Start Game</button>
+            <button class="btn btn-primary custom-btn" id="start-btn">Start Game</button>
             <div class="question-area hidden">Questions will go in here and they should be around this long?</div>
             <div class="choices-area hidden">
                 <div class="choice-btn pointed" id="choice-a" role="button">A. Something</div>
@@ -46,13 +50,13 @@
                 <div class="choice-btn pointed" id="choice-c" role="button">C. Something</div>
                 <div class="choice-btn pointed" id="choice-d" role="button">D. Something</div>
             </div>
-            <button class="btn btn-primary hidden" id="next-btn">Next Question</button>
-            <button class="btn btn-primary hidden" id="check-score-btn">Check Score</button>
+            <button class="btn btn-primary hidden custom-btn" id="next-btn">Next Question</button>
+            <button class="btn btn-primary hidden custom-btn" id="check-score-btn">Check Score</button>
             <div class="score-area hidden">
                 <div id="score-container">
                     <p id="score">100%</p>
                 </div>
-                <button class="btn btn-primary" id="new-game-btn">Play Again</button>
+                <button class="btn btn-primary custom-btn" id="new-game-btn">Play Again</button>
                 <div id="social-media">
                     <ul>
                         <li title="Link to my portfolio."><a href="http://baremedium.co/" target="_blank"><i class="fas fa-external-link-square-alt fa-3x"></i></a></li>
