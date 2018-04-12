@@ -8,10 +8,10 @@ const speechBubble = {
 	_question: 'Are you ready for Question ',
 	_correctResponse: ' was the right answer. Nicely done!',
 	_wrongResponse: "Oh no! That's not quite right. What you were looking for was choice ",
-	_checkScorePrompt: "All finished! Click the 'Check Score' button to the right to see how you did.",
-	_allCorrect: "Wow, you got them all right! Either you know me pretty well or you're a whiz at multiple choice. Either way, there's much more to learn about me. Click one of the links to the right to check out my portfolio and social media. Or you can play again!",
+	_checkScorePrompt: "All finished! Check and see how you did!",
+	_allCorrect: "Wow, you got them all right! Looks like you know some about me, but there's much more to learn. Check out the links to the right. Or you can play again!",
 	_someWrongBeginning: "Uh oh. Looks like you got ",
-	_someWrongEnding: " wrong. Don't fret. We can change that. You just have to learn a little more about me. Check out the links to the right to view my portfolio and social media accounts. Or if you want, you can play again!",
+	_someWrongEnding: " wrong. Looks like you can learn more about me. Check out the links to the right to get to know me. Or play again!",
 	set questionNumber(number) {
 		if (typeof number === 'number') {
 			this._questionNumber = number;
