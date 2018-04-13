@@ -12,6 +12,12 @@ $button-duration: 0.4s;
 $pulse-duration: 1s;
 $icon-color: #000;
 
+$breakpoint-phone: 480px;
+
+@mixin for-small-phone {
+	@media (max-width: $breakpoint-phone) { @content; }
+}
+
 @keyframes scoreTextPulse {
 	100% {
 		font-size: 6rem;
@@ -110,6 +116,10 @@ div {
 			position: absolute;
 			transform: translateX(-50%);
 			left: 50%;
+
+			@include for-small-phone {
+				width: 90%;
+			}
 
 			.arrow {
 				border-style: solid;

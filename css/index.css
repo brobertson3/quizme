@@ -71,6 +71,9 @@ div.left-pane .speech-bubble {
   position: absolute;
   transform: translateX(-50%);
   left: 50%; }
+  @media (max-width: 480px) {
+    div.left-pane .speech-bubble {
+      width: 90%; } }
   div.left-pane .speech-bubble .arrow {
     border-style: solid;
     position: absolute; }
