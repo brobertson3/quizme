@@ -98,6 +98,9 @@ div.left-pane #image-area {
   div.left-pane #image-area img {
     height: 275px;
     width: 150px; }
+    @media (max-width: 480px) {
+      div.left-pane #image-area img {
+        height: 175px; } }
 
 div.right-pane .question-area {
   padding: 10px;

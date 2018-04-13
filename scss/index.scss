@@ -152,6 +152,10 @@ div {
 			img {
 				height: 275px;
 				width: 150px;
+
+				@include for-small-phone {
+					height: 175px;
+				}
 			}
 		}
 	}
