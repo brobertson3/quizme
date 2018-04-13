@@ -34,10 +34,10 @@ button#start-btn {
   font-size: 2.5rem;
   border-radius: 1rem;
   display: block;
-  margin-top: 100px; }
+  margin-top: 65px; }
 
 button#new-game-btn {
-  margin-top: 75px; }
+  margin-top: 65px; }
 
 button.btn-primary {
   background-color: #FF7900;
@@ -48,7 +48,7 @@ button.btn-primary {
   button.btn-primary:active:hover, button.btn-primary.active:hover, button.btn-primary:active:focus, button.btn-primary.active:focus, button.btn-primary:active.focus, button.btn-primary.actice.focus {
     color: #FF7900 !important;
     background-color: #fff !important; }
-  button.btn-primary:visited, button.btn-primary:focused, button.btn-primary:active {
+  button.btn-primary:visited, button.btn-primary:focus, button.btn-primary:active {
     color: #FF7900 !important;
     background-color: #fff !important; }
   button.btn-primary:focus, button.btn-primary:active {
@@ -107,8 +107,7 @@ div.right-pane .question-area {
   text-align: center; }
 
 div.right-pane .score-area {
-  text-align: center;
-  margin-top: 40px; }
+  text-align: center; }
   div.right-pane .score-area #score-container {
     height: 6rem;
     margin-bottom: 50px; }
@@ -124,7 +123,6 @@ div.right-pane .score-area {
       color: #FF7900; }
   div.right-pane .score-area #social-media ul {
     list-style-type: none;
-    margin-top: 40px;
     padding: 0; }
     div.right-pane .score-area #social-media ul li {
       display: inline-block; }

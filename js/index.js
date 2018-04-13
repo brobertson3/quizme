@@ -92,26 +92,22 @@ const speechBubble = {
 
 // Starts off everything
 const init = () => {
-	// Start game
-	// document.getElementById('start-btn').addEventListener("click", startGame);
+	// Populate the questions and expected answers with first question
 	getQuestions('One');
 	// Update the speech bubble to say Welcome
 	document.getElementById('speech-text').textContent = speechBubble._greeting;
 }
 
-// Reinitialize the visibility of the components.
+// Reinitialize the visibility of the components and reset values.
 const newGame = () => {
 	speechBubble.questionNumber = 1;
 	questionAnswer.totalScore = 0;
-	// document.querySelector('.left-pane').classList.add('hidden');
-	// document.querySelector('.right-pane').classList.add('hidden');
 	document.querySelector('.score-area').classList.add('hidden');
-	// document.querySelector('.question-area').classList.remove('hidden');
-	// document.querySelector('.choices-area').classList.remove('hidden');
 	document.getElementById('start-btn').classList.remove('hidden');
 	$('.choice-btn').removeClass('correct incorrect disabled');
 	$('.choice-btn').click(evaluateAnswer);
 	$('#image-area img').attr('src', 'img/StartStickman.svg');
+	$('#image-area img').attr('alt', 'Image of stick figure pointing to buttons.');
 	init();
 }
 
@@ -124,17 +120,9 @@ const startGame = () => {
 	document.getElementById('start-btn').classList.add('hidden');
 	document.querySelector('.question-area').classList.remove('hidden');
 	$('#image-area img').attr('src', 'img/QuestionStickman.svg');
+	$('#image-area img').attr('alt', 'Image of stick figure looking confused with question marks around his head.');
 	$('.choices-area').removeClass('hidden');
-
-	// document.querySelector('.right-pane').classList.remove('hidden');
-	// document.querySelector('.left-pane').classList.remove('hidden');
 }
-
-// // Start game
-// document.getElementById('start-btn').addEventListener("click", startGame);
-
-// // Update the speech bubble to say Welcome and Question 1
-// document.getElementById('speech-text').textContent = speechBubble._greeting;
 
 // Display all options for current question
 const getQuestions = (number) => {
@@ -145,6 +133,7 @@ const getQuestions = (number) => {
 	document.getElementById('choice-d').textContent = questionAnswer[`question${number}`][4];
 };
 
+// Resets all button colors and hides Next Question button
 const nextQuestion = () => {
 	// On click of an answer, evaluate whether correct
 	$('.choice-btn').click(evaluateAnswer);
@@ -152,8 +141,10 @@ const nextQuestion = () => {
 	document.getElementById('speech-text').textContent = speechBubble.question;
 	document.getElementById('next-btn').classList.add('hidden');
 	$('#image-area img').attr('src', 'img/QuestionStickman.svg');
+	$('#image-area img').attr('alt', 'Image of stick figure looking confused with question marks around his head.');
 };
 
+// Displays the score to the user, along with links and button to restart the game
 const checkScore = () => {
 	let percentage = Math.floor((questionAnswer.totalScore / questionAnswer.numberOfQuestions) * 100);
 	// Hide the right pane elements
@@ -161,8 +152,11 @@ const checkScore = () => {
 	document.querySelector('.choices-area').classList.add('hidden');
 	document.getElementById('check-score-btn').classList.add('hidden');
 	document.querySelector('.score-area').classList.remove('hidden');
+	// Set the score as a percentage
 	document.getElementById('score').textContent = `${percentage}%`;
 	$('#image-area img').attr('src', 'img/StartStickman.svg');
+	$('#image-area img').attr('alt', 'Image of stick figure pointing to buttons.');
+	// Show different message depending on perfect score
 	if (questionAnswer.totalScore < 4) {
 		document.getElementById('speech-text').textContent = speechBubble.someWrong;
 	}  else {
@@ -173,7 +167,8 @@ const checkScore = () => {
 const evaluateAnswer = event => {
 	let curr = '';
 	let index = 0;
-	// console.log(event.target.id);
+
+	// Set the question number as a string in order to use for object bracket notation later
 	switch (speechBubble.questionNumber) {
 		case 1:
 			curr = 'One';
@@ -195,19 +190,17 @@ const evaluateAnswer = event => {
 	// Deregister the click event handler
 	$('.choice-btn').off("click");
 	// Add the disabled class, which will stop the hover effect
-	//TODO need to make the color stay the same as before though
 	$('.choice-btn').addClass('disabled');
 	//Set the correct variable for the speech bubble to use
 	speechBubble.correct = questionAnswer[`question${curr}`][5];
 	// If the correct answer is chosen, add point to score.
 	if (event.target.id[7].toUpperCase() === questionAnswer[`question${curr}`][5]) {
-		// console.log('That is correct');
 		questionAnswer.totalScore = questionAnswer.totalScore + 1;
 		event.target.classList.add('correct');
 		$('#image-area img').attr('src', 'img/CorrectStickman.svg');
+		$('#image-area img').attr('alt', 'Image of stick figure giving a thumbs up.');
 		document.getElementById('speech-text').textContent = speechBubble.correctResponse;
 	} else {
-		// console.log("This is incorrect.");
 		event.target.classList.add('incorrect');
 		// Find the index of the correct answer
 		switch (questionAnswer[`question${curr}`][5]) {
@@ -231,6 +224,7 @@ const evaluateAnswer = event => {
 		$('.choice-btn').eq(index).addClass('correct');
 
 		$('#image-area img').attr('src', 'img/IncorrectStickman.svg');
+		$('#image-area img').attr('alt', 'Image of stick figure looking frazzled.');
 		document.getElementById('speech-text').textContent = speechBubble.wrongResponse + '.';
 	}
 
@@ -240,16 +234,13 @@ const evaluateAnswer = event => {
 		speechBubble.questionNumber++;
 
 	} else {
-		// document.getElementById('next-btn').classList.add('hidden');
 		// Show the check score button
 		document.getElementById('check-score-btn').classList.remove('hidden');
 		document.getElementById('speech-text').textContent += ' ' + speechBubble.checkScorePrompt;
-		// document.getElementById('check-score-btn').addEventListener('click', checkScore);
 	}
 	
 }
 
-//document.querySelectorAll('.choice-btn').addEventListener("click", evaluateAnswer);
 // On click of start button, start the game
 document.getElementById('start-btn').addEventListener("click", startGame);
 // On click of an answer, evaluate whether correct
