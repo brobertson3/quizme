@@ -23,9 +23,9 @@
   },
   "homepage": "https://github.com/brobertson3/quizme#readme",
   "devDependencies": {
-    "browser-sync": "^2.23.6",
+    "browser-sync": "^2.24.4",
     "gulp": "^3.9.1",
     "gulp-sass": "^4.0.1",
-    "node-sass": "^4.8.3"
+    "node-sass": "^4.9.0"
   }
 }
